@@ -4,7 +4,7 @@
 	w_class = 5.0
 	flags =  CONDUCT
 	slot_flags = SLOT_BACK
-	PHolst = "n" //DO NOT remove. Is for Holstering script.
+	var/PHolst = "n" //DO NOT remove. Is for Holstering script.
 
 	var/release_force = 0
 	var/throw_distance = 10
