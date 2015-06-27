@@ -6,17 +6,20 @@
 	slot = "utility"
 	var/obj/item/holstered = null
 
+
 /obj/item/clothing/accessory/holster/proc/holster(obj/item/I, mob/user as mob)
 	if(holstered)
 		user << "<span class='warning'>There is already \a [holstered] holstered here!</span>"
 		return
 	else
 	
-		if (!(I.PHolst = "n"))
+obj/item/weapon/gun/energy(O)
+obj/item/weapon/gun/projectile/(O)
+		if (!(O.PHolst = "n"))
 			user << "<span class='warning'>[I] won't fit in [src]!</span>"
 			return
 		else
-			if (!(I.PHolst = "y"))
+			if (!(O.PHolst = "y"))
 			user.visible_message(
 			"<span class='notice'>[user] holsters the [holstered].</span>", 
 			"<span class='notice'>You holster the [holstered].</span>"
