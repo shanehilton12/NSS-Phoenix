@@ -8,7 +8,7 @@
 
 /obj/item/clothing/accessory/holster/proc/holster(obj/item/I, mob/user as mob)
 	if(holstered)
-		user << "<span class='warning'>There is already \a [holsteredG] holstered here!</span>"
+		user << "<span class='warning'>There is already \a [holstered] holstered here!</span>"
 		return
 	else
 	
@@ -18,15 +18,13 @@
 		else
 			if (!(I.PHolst = "y"))
 			user.visible_message(
-			"<span class='notice'>[user] holsters the [holsteredG].</span>", 
-			"<span class='notice'>You holster the [holsteredG].</span>"
+			"<span class='notice'>[user] holsters the [holstered].</span>", 
+			"<span class='notice'>You holster the [holstered].</span>"
 			)
 			user.drop_from_inventory(holstered)
 			holstered.loc = src
 			holstered.add_fingerprint(user)
 			w_class = max(w_class, holstered.w_class)
-			I = holsteredG
-	
 
 
 /obj/item/clothing/accessory/holster/proc/unholster(mob/user as mob)
@@ -36,17 +34,17 @@
 	else
 
 		if(istype(user.get_active_hand(),/obj) && istype(user.get_inactive_hand(),/obj))
-			user << "<span class='warning'>You need an empty hand to draw the [holsteredG]!</span>"
+			user << "<span class='warning'>You need an empty hand to draw the [holstered]!</span>"
 		else
 			if(user.a_intent == "hurt")
 				user.visible_message(
-					"\red [user] draws the [holsteredG], ready to shoot!</span>",
-					"<span class='warning'>You draw the [holsteredG], ready to shoot!</span>"
+					"\red [user] draws the [holstered], ready to shoot!</span>",
+					"<span class='warning'>You draw the [holstered], ready to shoot!</span>"
 					)
 			else
 				user.visible_message(
-					"<span class='notice'>[user] draws the [holsteredG], pointing it at the ground.</span>",
-					"<span class='notice'>You draw the [holsteredG], pointing it at the ground.</span>"
+					"<span class='notice'>[user] draws the [holstered], pointing it at the ground.</span>",
+					"<span class='notice'>You draw the [holstered], pointing it at the ground.</span>"
 					)
 		user.put_in_hands(holstered)
 		holstered.add_fingerprint(user)
