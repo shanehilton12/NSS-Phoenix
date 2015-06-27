@@ -18,6 +18,7 @@
 	accuracy = -1
 	scoped_accuracy = 2
 	var/bolt_open = 0
+	PHolst = "n" //DO NOT remove. Is for Holstering script.
 
 /obj/item/weapon/gun/projectile/heavysniper/update_icon()
 	if(bolt_open)
