@@ -60,7 +60,7 @@
 	var/dart_reagent_amount = 15
 	var/container_type = /obj/item/weapon/reagent_containers/glass/beaker
 	var/list/starting_chems = null
-	PHolst = "n" //DO NOT remove. Is for Holstering script.
+	var/PHolst = "n" //DO NOT remove. Is for Holstering script.
 
 /obj/item/weapon/gun/projectile/dartgun/dartgun/New()
 	..()
