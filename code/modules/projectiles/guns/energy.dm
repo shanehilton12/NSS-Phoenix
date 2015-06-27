@@ -4,6 +4,7 @@
 	icon_state = "energy"
 	fire_sound = 'sound/weapons/Taser.ogg'
 	fire_sound_text = "laser blast"
+	PHolst = "y" //DO NOT remove. Is for Holstering script.
 
 	var/obj/item/weapon/cell/power_supply //What type of power cell this uses
 	var/charge_cost = 100 //How much energy is needed to fire.
