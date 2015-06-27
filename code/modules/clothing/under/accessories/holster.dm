@@ -5,15 +5,13 @@
 	item_color = "holster"
 	slot = "utility"
 	var/obj/item/holstered = null
-	var/PHolst1 = null
-	var/PHolst2 = null
 
-obj/item/weapon/gun/energy/set_value(O as num)
+obj/item/weapon/gun/energy(O as num)
    set src in view()
-   PHolst1 = O
-obj/item/weapon/gun/projectile/set_value(O as num)
+   PHolst = O
+obj/item/weapon/gun/projectile(O as num)
    set src in view()
-   PHolst2 = O
+   PHolst = O
 
 
 /obj/item/clothing/accessory/holster/proc/holster(obj/item/I, mob/user as mob)
@@ -21,7 +19,7 @@ obj/item/weapon/gun/projectile/set_value(O as num)
 		user << "<span class='warning'>There is already \a [holstered] holstered here!</span>"
 		return
 	else
-		if(PHolst1 == "1")
+		if(PHolst == "1")
 			user.visible_message(
 			"<span class='notice'>[user] holsters \the [holstered].</span>", 
 			"<span class='notice'>You holster \the [holstered].</span>"
@@ -32,7 +30,7 @@ obj/item/weapon/gun/projectile/set_value(O as num)
 			w_class = max(w_class, holstered.w_class)
 			return
 		else
-			if(PHolst2 == "1")
+			if(PHolst == "1")
 				user.visible_message(
 				"<span class='notice'>[user] holsters \the [holstered].</span>", 
 				"<span class='notice'>You holster \the [holstered].</span>"
