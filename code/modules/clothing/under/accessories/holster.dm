@@ -15,11 +15,7 @@
 	
 obj/item/weapon/gun/energy(O)
 obj/item/weapon/gun/projectile/(O)
-		if (!(O.PHolst = "n"))
-			user << "<span class='warning'>[I] won't fit in [src]!</span>"
-			return
-		else
-			if (!(O.PHolst = "y"))
+		if (O.PHolst = "y")
 			user.visible_message(
 			"<span class='notice'>[user] holsters the [holstered].</span>", 
 			"<span class='notice'>You holster the [holstered].</span>"
@@ -28,6 +24,9 @@ obj/item/weapon/gun/projectile/(O)
 			holstered.loc = src
 			holstered.add_fingerprint(user)
 			w_class = max(w_class, holstered.w_class)
+		else
+			return
+
 
 
 /obj/item/clothing/accessory/holster/proc/unholster(mob/user as mob)
