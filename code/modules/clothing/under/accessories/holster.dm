@@ -6,6 +6,8 @@
 	slot = "utility"
 	var/obj/item/holstered = null
 	var/emptelse = null
+	var/tweakB = null
+	var/tweakD = null
 
 var/obj/item/weapon/gun/energy/tweakA = tweakB
 var/obj/item/weapon/gun/projectile/tweakC = tweakD
