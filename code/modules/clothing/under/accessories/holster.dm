@@ -6,150 +6,48 @@
 	icon_state = "holster"
 	item_color = "holster"
 	slot = "utility"
-	var/obj/item/holstered = null
-	var/emptelse = null
-	
-/obj/item/weapon/gun/energy
-	var/PHolstE = "1" //DO NOT remove. Is for Holstering script.
-/obj/item/weapon/gun/projectile/colt
-	var/PHolst = "1" //DO NOT remove. Is for Holstering script.
-/obj/item/weapon/gun/projectile/sec
-	var/PHolst = "1" //DO NOT remove. Is for Holstering script.
-/obj/item/weapon/gun/projectile/deagle
-	var/PHolst = "1" //DO NOT remove. Is for Holstering script.
-/obj/item/weapon/gun/projectile/revolver
-	var/PHolst = "1" //DO NOT remove. Is for Holstering script.
-	
-/obj/item/weapon/gun/projectile/automatic
-	var/PHolst = "0" //DO NOT remove. Is for Holstering script.
-/obj/item/weapon/gun/projectile/dartgun
-	var/PHolst = "0" //DO NOT remove. Is for Holstering script.
-/obj/item/weapon/gun/projectile/gyropistol
-	var/PHolst = "0" //DO NOT remove. Is for Holstering script.
-/obj/item/weapon/gun/projectile/shotgun/pump
-	var/PHolst = "0" //DO NOT remove. Is for Holstering script.
-/obj/item/weapon/gun/projectile/shotgun/doublebarrel
-	var/PHolst = "0" //DO NOT remove. Is for Holstering script.
-/obj/item/weapon/gun/projectile/heavysniper
-	var/PHolst = "0" //DO NOT remove. Is for Holstering script.
+	var/slots = 1
+	var/obj/item/weapon/storage/internal/hold
+	w_class = 3.0
 
+/obj/item/clothing/accessory/storage/New()
+	..()
+	hold = new/obj/item/weapon/storage/internal(src)
+	hold.storage_slots = slots
 
-
-
-/obj/item/clothing/accessory/holster/proc/holster(obj/item/I, mob/user as mob)
-	if(holstered)
-		user << "<span class='warning'>There is already \a [holstered] holstered here!</span>"
-		return
-	else
-		if(I.PHolstE == "1")
-			user.visible_message(
-			"<span class='notice'>[user] holsters \the [holstered].</span>", 
-			"<span class='notice'>You holster \the [holstered].</span>"
-			)
-			user.drop_from_inventory(holstered)
-			holstered.loc = src
-			holstered.add_fingerprint(user)
-			w_class = max(w_class, holstered.w_class)
-			return
-		else
-			if(I.PHolst == "1")
-				user.visible_message(
-				"<span class='notice'>[user] holsters \the [holstered].</span>", 
-				"<span class='notice'>You holster \the [holstered].</span>"
-				)
-				user.drop_from_inventory(holstered)
-				holstered.loc = src
-				holstered.add_fingerprint(user)
-				w_class = max(w_class, holstered.w_class)
-				return
-			else
-				emptelse = null
-				return
-
-
-/obj/item/clothing/accessory/holster/proc/unholster(mob/user as mob)
-	if(holstered = null)
-		user << "<span class='warning'>There is nothing in here!</span>"
-		return	
-	else
-
-		if(istype(user.get_active_hand(),/obj) && istype(user.get_inactive_hand(),/obj))
-			user << "<span class='warning'>You need an empty hand to draw \the [holstered]!</span>"
-		else
-			if(user.a_intent == "hurt")
-				user.visible_message(
-					"\red [user] draws the [holstered], ready to shoot!</span>",
-					"<span class='warning'>You draw \the [holstered], ready to shoot!</span>"
-					)
-			else
-				user.visible_message(
-					"<span class='notice'>[user] draws \the [holstered], pointing it at the ground.</span>",
-					"<span class='notice'>You draw \the [holstered], pointing it at the ground.</span>"
-					)
-		user.put_in_hands(holstered)
-		holstered.add_fingerprint(user)
-		holstered = null
-		w_class = initial(w_class)
-
-/obj/item/clothing/accessory/holster/attack_hand(mob/user as mob)
+/obj/item/clothing/accessory/storage/attack_hand(mob/user as mob)
 	if (has_suit)	//if we are part of a suit
-		if (holstered)
-			unholster(user)
+		hold.open(user)
 		return
 
-	..(user)
+	if (hold.handle_attack_hand(user))	//otherwise interact as a regular storage item
+		..(user)
 
-/obj/item/clothing/accessory/holster/attackby(obj/item/W as obj, mob/user as mob)
-	holster(W, user)
+/obj/item/clothing/accessory/storage/MouseDrop(obj/over_object as obj)
+	if (has_suit)
+		return
 
-/obj/item/clothing/accessory/holster/emp_act(severity)
-	if (holstered)
-		holstered.emp_act(severity)
+	if (hold.handle_mousedrop(usr, over_object))
+		..(over_object)
+
+/obj/item/clothing/accessory/storage/attackby(obj/item/W as obj, mob/user as mob)
+	return hold.attackby(W, user)
+
+/obj/item/clothing/accessory/storage/emp_act(severity)
+	hold.emp_act(severity)
 	..()
 
-/obj/item/clothing/accessory/holster/examine(mob/user)
-	..(user)
-	if (holstered)
-		user << "A [holstered] is holstered here."
-	else
-		user << "It is empty."
-
-/obj/item/clothing/accessory/holster/on_attached(obj/item/clothing/under/S, mob/user as mob)
-	..()
-	has_suit.verbs += /obj/item/clothing/accessory/holster/verb/holster_verb
-
-/obj/item/clothing/accessory/holster/on_removed(mob/user as mob)
-	has_suit.verbs -= /obj/item/clothing/accessory/holster/verb/holster_verb
+/obj/item/clothing/accessory/storage/hear_talk(mob/M, var/msg, verb, datum/language/speaking)
+	hold.hear_talk(M, msg, verb, speaking)
 	..()
 
-//For the holster hotkey
-/obj/item/clothing/accessory/holster/verb/holster_verb()
-	set name = "Holster"
-	set category = "Object"
-	set src in usr
-	if(!istype(usr, /mob/living)) return
-	if(usr.stat) return
-
-	//can't we just use src here?
-	var/obj/item/clothing/accessory/holster/H = null
-	if (istype(src, /obj/item/clothing/accessory/holster))
-		H = src
-	else if (istype(src, /obj/item/clothing/under))
-		var/obj/item/clothing/under/S = src
-		if (S.accessories.len)
-			H = locate() in S.accessories
-
-	if (!H)
-		usr << "<span class='warning'>Something is very wrong.</span>"
-
-	if(!H.holstered)
-		var/obj/item/W = usr.get_active_hand()
-		if(!istype(W, /obj/item))
-			usr << "<span class='warning'>You need your gun equiped to holster it.</span>"
-			return
-		H.holster(W, usr)
-	else
-		H.unholster(usr)
+/obj/item/clothing/accessory/storage/attack_self(mob/user as mob)
+	user << "<span class='notice'>You empty [src].</span>"
+	var/turf/T = get_turf(src)
+	hold.hide_from(usr)
+	for(var/obj/item/I in hold.contents)
+		hold.remove_from_storage(I, T)
+	src.add_fingerprint(user)
 
 /obj/item/clothing/accessory/holster/armpit
 	name = "armpit holster"
