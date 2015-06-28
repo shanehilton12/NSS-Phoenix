@@ -6,21 +6,19 @@
 	slot = "utility"
 	var/obj/item/holstered = null
 
-obj/item/weapon/gun/energy/set_PHolst(O as num)
-   set src in view()
-   PHolst = O
-obj/item/weapon/gun/projectile/set_PHolst(O as num)
+energy/set_PHolst(O as num)
    set src in view()
    PHolst = O
 
-var/obj/item/weapon/gun/energy/gun = gun
+var/obj/item/weapon/gun/energy/gun1 = gun1
+var/obj/item/weapon/gun/projectile/gun2 = gun2
 
 /obj/item/clothing/accessory/holster/proc/holster(obj/item/I, mob/user as mob)
 	if(holstered)
 		user << "<span class='warning'>There is already \a [holstered] holstered here!</span>"
 		return
 	else
-		if(gun.PHolst == "1")
+		if(gun1.PHolst == "1")
 			user.visible_message(
 			"<span class='notice'>[user] holsters \the [holstered].</span>", 
 			"<span class='notice'>You holster \the [holstered].</span>"
@@ -31,6 +29,17 @@ var/obj/item/weapon/gun/energy/gun = gun
 			w_class = max(w_class, holstered.w_class)
 			return
 		else
+			if(gun2.PHolst == "1")
+				user.visible_message(
+				"<span class='notice'>[user] holsters \the [holstered].</span>", 
+				"<span class='notice'>You holster \the [holstered].</span>"
+				)
+				user.drop_from_inventory(holstered)
+				holstered.loc = src
+				holstered.add_fingerprint(user)
+				w_class = max(w_class, holstered.w_class)
+				return
+			else
 
 
 /obj/item/clothing/accessory/holster/proc/unholster(mob/user as mob)
