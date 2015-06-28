@@ -6,10 +6,6 @@
 	slot = "utility"
 	var/obj/item/holstered = null
 
-energy/set_PHolst(O as num)
-   set src in view()
-   PHolst = O
-
 var/obj/item/weapon/gun/energy/gun1 = gun1
 var/obj/item/weapon/gun/projectile/gun2 = gun2
 
