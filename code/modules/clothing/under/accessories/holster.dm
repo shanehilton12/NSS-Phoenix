@@ -1,8 +1,8 @@
 //I will murder whoever made the coding library called Byond Coding. May he burn alive and then burn in hell once more - Shane
 /obj/item/clothing/accessory/holster/proc/unholster(mob/user as mob)
-return
+
 /obj/item/clothing/accessory/holster/proc/holster(obj/item/I, mob/user as mob)
-return
+
 
 /obj/item/clothing/accessory/holster
 	name = "shoulder holster"
