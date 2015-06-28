@@ -22,7 +22,6 @@
 	caliber = ".45"
 	origin_tech = "combat=5;materials=2;syndicate=8"
 	ammo_type = /obj/item/ammo_casing/c45
-	var/PHolst = "0" //DO NOT remove. Is for Holstering script.
 
 /obj/item/weapon/gun/projectile/automatic/c20r
 	name = "\improper C-20r SMG"
@@ -39,7 +38,6 @@
 	magazine_type = /obj/item/ammo_magazine/a12mm
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
-	var/PHolst = "0" //DO NOT remove. Is for Holstering script.
 
 /obj/item/weapon/gun/projectile/automatic/c20r/update_icon()
 	..()
@@ -61,7 +59,6 @@
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/c762
-	var/PHolst = "0" //DO NOT remove. Is for Holstering script.
 
 /obj/item/weapon/gun/projectile/automatic/sts35/update_icon()
 	..()
@@ -81,7 +78,6 @@
 	fire_sound = 'sound/weapons/Gunshot_smg.ogg'
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/mc9mmt/rubber
-	var/PHolst = "0" //DO NOT remove. Is for Holstering script.
 
 /obj/item/weapon/gun/projectile/automatic/wt550/update_icon()
 	..()
@@ -107,7 +103,6 @@
 	magazine_type = /obj/item/ammo_magazine/a556
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
-	var/PHolst = "0" //DO NOT remove. Is for Holstering script.
 	
 	var/use_launcher = 0
 	var/obj/item/weapon/gun/launcher/grenade/underslung/launcher
@@ -172,7 +167,6 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/a762
 	var/cover_open = 0
-	var/PHolst = "0" //DO NOT remove. Is for Holstering script.
 
 /obj/item/weapon/gun/projectile/automatic/l6_saw/attack_self(mob/user as mob)
 	cover_open = !cover_open
