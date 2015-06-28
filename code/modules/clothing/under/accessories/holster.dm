@@ -8,6 +8,7 @@
 	slot = "utility"
 	var/slots = 1
 	var/obj/item/weapon/storage/internal/hold
+	var/obj/item/holstered = null
 	w_class = 3.0
 
 /obj/item/clothing/accessory/storage/New()
