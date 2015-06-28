@@ -6,7 +6,6 @@
 	caliber = ".45"
 	origin_tech = "combat=2;materials=2"
 	load_method = MAGAZINE
-	var/PHolst = "1" //DO NOT remove. Is for Holstering script.
 
 /obj/item/weapon/gun/projectile/colt/detective
 	desc = "A cheap Martian knock-off of a Colt M1911. Uses .45 rounds."
@@ -38,7 +37,6 @@
 	caliber = ".45"
 	origin_tech = "combat=2;materials=2"
 	load_method = MAGAZINE
-	var/PHolst = "1" //DO NOT remove. Is for Holstering script.
 
 /obj/item/weapon/gun/projectile/sec/flash
 	name = "\improper NT Mk58 signal pistol"
@@ -70,7 +68,6 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/a50
 	auto_eject = 1
-	var/PHolst = "1" //DO NOT remove. Is for Holstering script.
 
 /obj/item/weapon/gun/projectile/deagle/gold
 	desc = "A gold plated gun folded over a million times by superior martian gunsmiths. Uses .50 AE ammo."
@@ -98,7 +95,6 @@
 	magazine_type = /obj/item/ammo_magazine/a75
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
-	var/PHolst = "0" //DO NOT remove. Is for Holstering script.
 
 /obj/item/weapon/gun/projectile/gyropistol/update_icon()
 	..()
