@@ -9,14 +9,15 @@
 	
 //had an error, woooo.
 
-var/obj/item/weapon/gun/energy/gun = gun
+var/obj/item/weapon/gun/energy/PHolstE = PHolstA
+var/obj/item/weapon/gun/projectile/PHolst = PHolstB
 
 /obj/item/clothing/accessory/holster/proc/holster(obj/item/I, mob/user as mob)
 	if(holstered)
 		user << "<span class='warning'>There is already \a [holstered] holstered here!</span>"
 		return
 	else
-		if(gunA.PHolst == "1")
+		if(PHolstA == "1")
 			user.visible_message(
 			"<span class='notice'>[user] holsters \the [holstered].</span>", 
 			"<span class='notice'>You holster \the [holstered].</span>"
@@ -27,7 +28,7 @@ var/obj/item/weapon/gun/energy/gun = gun
 			w_class = max(w_class, holstered.w_class)
 			return
 		else
-			if(gunB.PHolst == "1")
+			if(PHolstB == "1")
 				user.visible_message(
 				"<span class='notice'>[user] holsters \the [holstered].</span>", 
 				"<span class='notice'>You holster \the [holstered].</span>"
