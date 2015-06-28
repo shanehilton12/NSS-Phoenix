@@ -14,7 +14,6 @@
 	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
 	handle_casings = HOLD_CASINGS
 	var/recentpump = 0 // to prevent spammage
-	var/PHolst = "0" //DO NOT remove. Is for Holstering script.
 
 /obj/item/weapon/gun/projectile/shotgun/pump/consume_next_projectile()
 	if(chambered)
@@ -66,7 +65,6 @@
 	caliber = "shotgun"
 	origin_tech = "combat=3;materials=1"
 	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
-	var/PHolst = "0" //DO NOT remove. Is for Holstering script.
 
 /obj/item/weapon/gun/projectile/shotgun/doublebarrel/flare
 	name = "signal shotgun"
