@@ -7,15 +7,15 @@
 	var/obj/item/holstered = null
 	var/emptelse = null
 
-var/obj/item/weapon/gun/energy/tweakA = tweakA
-var/obj/item/weapon/gun/projectile/tweakB = tweakB
+var/obj/item/weapon/gun/energy/tweakA = tweakB
+var/obj/item/weapon/gun/projectile/tweakC = tweakD
 
 /obj/item/clothing/accessory/holster/proc/holster(obj/item/I, mob/user as mob)
 	if(holstered)
 		user << "<span class='warning'>There is already \a [holstered] holstered here!</span>"
 		return
 	else
-		if(tweakA.PHolst == "1")
+		if(tweakB.PHolst == "1")
 			user.visible_message(
 			"<span class='notice'>[user] holsters \the [holstered].</span>", 
 			"<span class='notice'>You holster \the [holstered].</span>"
@@ -26,7 +26,7 @@ var/obj/item/weapon/gun/projectile/tweakB = tweakB
 			w_class = max(w_class, holstered.w_class)
 			return
 		else
-			if(tweakB.PHolst == "1")
+			if(tweakD.PHolst == "1")
 				user.visible_message(
 				"<span class='notice'>[user] holsters \the [holstered].</span>", 
 				"<span class='notice'>You holster \the [holstered].</span>"
