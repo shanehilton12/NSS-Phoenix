@@ -8,10 +8,8 @@
 	var/emptelse = null
 	
 /obj/item/weapon/gun/energy
-	var/PHolstE = 1
 	
 obj/item/weapon/gun/projectile
-	var/PHolst = 1
 	
 //I will murder whoever made the coding library called Byond Coding. May he burn alive and then burn in hell once more - Shane
 
