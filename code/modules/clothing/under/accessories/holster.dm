@@ -35,7 +35,6 @@ var/obj/item/weapon/gun/projectile/gun2 = gun2
 				holstered.add_fingerprint(user)
 				w_class = max(w_class, holstered.w_class)
 				return
-			else
 
 
 /obj/item/clothing/accessory/holster/proc/unholster(mob/user as mob)
