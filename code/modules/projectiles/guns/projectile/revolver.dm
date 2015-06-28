@@ -8,7 +8,6 @@
 	handle_casings = CYCLE_CASINGS
 	max_shells = 7
 	ammo_type = /obj/item/ammo_casing/a357
-	var/PHolst = "1" //DO NOT remove. Is for Holstering script.
 
 /obj/item/weapon/gun/projectile/revolver/mateba
 	name = "mateba"
