@@ -9,8 +9,7 @@
 	
 //had an error, woooo.
 
-var/obj/item/weapon/gun/energy/gun = gunA
-var/obj/item/weapon/gun/projectile/gun = gunB
+var/obj/item/weapon/gun/energy/gun = gun
 
 /obj/item/clothing/accessory/holster/proc/holster(obj/item/I, mob/user as mob)
 	if(holstered)
