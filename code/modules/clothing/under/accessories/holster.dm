@@ -7,17 +7,17 @@
 	var/obj/item/holstered = null
 	var/emptelse = null
 	
-//had an error, woooo.
+//I will murder whoever made the coding library called Byond Coding. May he burn alive and then burn in hell once more - Shane
 
-var/obj/item/weapon/gun/energy/PHolstE = PHolstA
-var/obj/item/weapon/gun/projectile/PHolst = PHolstB
+var/A = var/obj/item/weapon/gun/energy/PHolst
+var/B = var/obj/item/weapon/gun/projectile/PHolst
 
 /obj/item/clothing/accessory/holster/proc/holster(obj/item/I, mob/user as mob)
 	if(holstered)
 		user << "<span class='warning'>There is already \a [holstered] holstered here!</span>"
 		return
 	else
-		if(PHolstA == "1")
+		if(A == "1")
 			user.visible_message(
 			"<span class='notice'>[user] holsters \the [holstered].</span>", 
 			"<span class='notice'>You holster \the [holstered].</span>"
@@ -28,7 +28,7 @@ var/obj/item/weapon/gun/projectile/PHolst = PHolstB
 			w_class = max(w_class, holstered.w_class)
 			return
 		else
-			if(PHolstB == "1")
+			if(B == "1")
 				user.visible_message(
 				"<span class='notice'>[user] holsters \the [holstered].</span>", 
 				"<span class='notice'>You holster \the [holstered].</span>"
