@@ -5,6 +5,7 @@
 	item_color = "holster"
 	slot = "utility"
 	var/obj/item/holstered = null
+	var/emptelse = null
 
 var/obj/item/weapon/gun/energy/gun1 = gun1
 var/obj/item/weapon/gun/projectile/gun2 = gun2
@@ -34,6 +35,9 @@ var/obj/item/weapon/gun/projectile/gun2 = gun2
 				holstered.loc = src
 				holstered.add_fingerprint(user)
 				w_class = max(w_class, holstered.w_class)
+				return
+			else
+				emptelse = null
 				return
 
 
