@@ -1,3 +1,5 @@
+//I will murder whoever made the coding library called Byond Coding. May he burn alive and then burn in hell once more - Shane
+
 /obj/item/clothing/accessory/holster
 	name = "shoulder holster"
 	desc = "A handgun holster."
@@ -8,10 +10,29 @@
 	var/emptelse = null
 	
 /obj/item/weapon/gun/energy
+	var/PHolstE = "1" //DO NOT remove. Is for Holstering script.
+/obj/item/weapon/gun/projectile/colt
+	var/PHolst = "1" //DO NOT remove. Is for Holstering script.
+/obj/item/weapon/gun/projectile/sec
+	var/PHolst = "1" //DO NOT remove. Is for Holstering script.
+/obj/item/weapon/gun/projectile/deagle
+	var/PHolst = "1" //DO NOT remove. Is for Holstering script.
+/obj/item/weapon/gun/projectile/revolver
+	var/PHolst = "1" //DO NOT remove. Is for Holstering script.
 	
-obj/item/weapon/gun/projectile
-	
-//I will murder whoever made the coding library called Byond Coding. May he burn alive and then burn in hell once more - Shane
+/obj/item/weapon/gun/projectile/automatic
+	var/PHolst = "0" //DO NOT remove. Is for Holstering script.
+/obj/item/weapon/gun/projectile/dartgun
+	var/PHolst = "0" //DO NOT remove. Is for Holstering script.
+/obj/item/weapon/gun/projectile/gyropistol
+	var/PHolst = "0" //DO NOT remove. Is for Holstering script.
+/obj/item/weapon/gun/projectile/shotgun/pump
+	var/PHolst = "0" //DO NOT remove. Is for Holstering script.
+/obj/item/weapon/gun/projectile/shotgun/doublebarrel
+	var/PHolst = "0" //DO NOT remove. Is for Holstering script.
+/obj/item/weapon/gun/projectile/heavysniper
+	var/PHolst = "0" //DO NOT remove. Is for Holstering script.
+
 
 
 
@@ -20,7 +41,7 @@ obj/item/weapon/gun/projectile
 		user << "<span class='warning'>There is already \a [holstered] holstered here!</span>"
 		return
 	else
-		if(PHolstE == "1")
+		if(I.PHolstE == "1")
 			user.visible_message(
 			"<span class='notice'>[user] holsters \the [holstered].</span>", 
 			"<span class='notice'>You holster \the [holstered].</span>"
@@ -31,7 +52,7 @@ obj/item/weapon/gun/projectile
 			w_class = max(w_class, holstered.w_class)
 			return
 		else
-			if(PHolst == "1")
+			if(I.PHolst == "1")
 				user.visible_message(
 				"<span class='notice'>[user] holsters \the [holstered].</span>", 
 				"<span class='notice'>You holster \the [holstered].</span>"
